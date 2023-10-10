@@ -1,0 +1,28 @@
+<div th:fragment="_table_course" class="container text-center" th:if="${not #lists.isEmpty(students)}">
+    <div class="container my-5">
+        <form th:action="@{/curso/buscar/{id}(id=${course.id})}" method="post" class="d-flex">
+            <input name="text" class="form-control me-2" type="search"
+                   placeholder="Ingrese la condición del alumno (Aprobado / cursando)" aria-label="Search"
+                   style="width:40%">
+            <button class="btn btn-outline-success" type="submit">Buscar por condición</button>
+        </form>
+    </div>
+    <table class="table table-success table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Fecha de Registro</th>
+            <th scope="col">Condición</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.name}">Nombre</td>
+            <td th:text="${student.lastName}">Apellido</td>
+            <td th:text="${student.registrationDate}">Curso</td>
+            <td th:text="${student.approved} ? 'Aprobado' : 'Cursando'">Condicion</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

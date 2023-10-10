@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Datos del Curso</title>
+</head>
+
+<body>
+<nav th:replace="components/navbar :: nav_bar"></nav>
+<div class="container my-4"
+     style="border: 2px solid #333; border-radius:10px; width:35%; padding:10px; color:white; background:black">
+    <div class="mb-4">
+        <h1 class="card-header" th:text="${course.title}"></h1>
+        <h2 class="card-header" th:text="${course.description}"></h2>
+        <h5 class="card-header my-3">Cantidad de Alumnos inscriptos: <span th:text="${count}"></span></h5>
+    </div>
+
+    <a th:href="@{/curso/lista-cursos}" class="btn btn-outline-primary">Ir a Cursos</a>
+    <a th:href="@{/curso/modificar/{id}(id=${course.id})}" class="btn btn-outline-primary">Modificar</a>
+    <a th:href="@{/curso/eliminar/{id} (id=${course.id})}" class="btn btn-outline-primary">Eliminar</a>
+
+</div>
+
+
+
+
+<div th:replace="components/table_course :: _table_course"></div>
+<div class="container text-center" th:if="${#lists.isEmpty(students)}">
+    <h1 style="color: #D5DBDB; margin-top:10%"> ->NO HAY ALUMNOS INSCRIPTOS EN ESTA MATERIA<-</h1>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+</html>

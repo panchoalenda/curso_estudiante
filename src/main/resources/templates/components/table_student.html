@@ -1,0 +1,21 @@
+<div th:fragment="_table_student" class="container text-center" th:if="${not #lists.isEmpty(students)}">
+
+    <table class="table table-success table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Detalle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.name}">Nombre</td>
+            <td th:text="${student.lastName}">Apellido</td>
+            <td th:text="${student.course.title}">Curso</td>
+            <td><a th:href="@{/estudiante/detalle/{id} (id=${student.id})}"><img src="/img/lup.png" style="width:40px"></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
